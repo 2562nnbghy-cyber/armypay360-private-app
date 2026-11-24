@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101b31"><meta name="description" content="Private, offline-first PCDA(O) payslip audit for your iPhone.">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="stylesheet" href="./styles.css">
+<title>ArmyPay 360</title>
+</head>
+<body>
+<header class="topbar"><div class="brand"><div class="brandmark">A<span>360</span></div><div><strong>ArmyPay 360</strong><small>PERSONAL PAY AUDITOR</small></div></div><div class="privacy"><i></i> ON-DEVICE</div></header>
+<main id="app">
+<section id="lockScreen" class="panel lockpanel">
+ <div class="eyebrow">PRIVATE • LOCAL VAULT</div><h1 id="lockTitle">Set up your private vault</h1><p id="lockCopy">Create a strong vault passphrase. It encrypts your audit records on this iPhone. It is never sent anywhere and cannot be recovered if forgotten.</p>
+ <label for="vaultPassword">Vault passphrase</label><input id="vaultPassword" type="password" autocomplete="current-password" placeholder="At least 10 characters">
+ <button id="unlockBtn" class="primary full">Create secure vault</button><p id="lockError" class="error" role="alert"></p>
+ <p class="micro">Your PDF password is requested only when a PDF is opened. It is not saved. Original PDFs are not retained by ArmyPay 360.</p>
+</section>
+<div id="mainApp" hidden>
+<section class="hero"><div><div class="eyebrow">YOUR PERSONAL ACCOUNTS DESK</div><h1>Pay, checked.</h1><p>Every statement. Every line. Every month.</p></div><div class="heroicon">₹</div></section>
+<section class="stats" id="stats"><article><small>MONTHS AUDITED</small><strong id="monthCount">0</strong></article><article><small>ITEMS TO REVIEW</small><strong id="reviewCount">0</strong></article><article><small>LATEST TAKE-HOME</small><strong id="latestNet">—</strong></article></section>
+<section class="panel"><div class="sectionhead"><div><div class="eyebrow">MONTHLY AUDIT</div><h2>Import payslip PDF</h2></div><span class="pill">LOCAL PROCESSING</span></div><p class="muted">Choose a PCDA(O) PDF from Files. Password-protected, selectable-text PDFs are supported.</p>
+ <label class="filepick" for="pdfInput"><span class="fileicon">＋</span><span><b>Select PDF payslip</b><small>PDF remains on this iPhone</small></span></label><input id="pdfInput" type="file" accept="application/pdf,.pdf" hidden>
+ <div id="pdfPasswordWrap" hidden><label for="pdfPassword">PDF password</label><input id="pdfPassword" type="password" autocomplete="off" placeholder="Enter PDF password"><button id="auditBtn" class="primary full">Audit this statement</button></div>
+ <div id="engineStatus" class="statusline"><span class="dot"></span><span>PDF engine not prepared for offline use</span><button id="prepareEngine" class="textbtn">Prepare</button></div><p id="importStatus" class="micro" aria-live="polite"></p>
+</section>
+<section class="panel"><div class="sectionhead"><div><div class="eyebrow">AUDIT INTELLIGENCE</div><h2>Latest findings</h2></div><span id="auditStatus" class="pill neutral">NO AUDIT YET</span></div><div id="findings" class="empty">Import your first statement to see arithmetic checks, changes, missing recurring entries and unusual deductions.</div></section>
+<section class="panel"><div class="sectionhead"><div><div class="eyebrow">STATEMENT HISTORY</div><h2>Month by month</h2></div><div><button id="exportBtn" class="textbtn">Encrypted backup</button><button id="restoreBtn" class="textbtn">Restore backup</button><input id="backupInput" type="file" accept=".ap360,application/octet-stream" hidden></div></div><div id="history" class="empty">No statements imported yet.</div></section>
+<section class="panel"><div class="sectionhead"><div><div class="eyebrow">YOUR AUDIT RULES</div><h2>Personal expectations</h2></div></div><div class="rulegrid"><div><label for="dsopAmount">Expected DSOP subscription (₹)</label><input id="dsopAmount" inputmode="numeric" type="number" min="0" value="10000"></div><div><label for="dsopFrom">Effective from</label><input id="dsopFrom" type="month" value="2026-06"></div></div><button id="saveRules" class="secondary">Save personal rule</button><p class="micro">Your confirmed DSOP change is prefilled: ₹10,000 from June 2026. Earlier months are not judged against this rule. Change it whenever your subscription changes.</p></section>
+<section class="panel"><div class="sectionhead"><div><div class="eyebrow">DEVICE-ONLY DATA</div><h2>Privacy & storage</h2></div><span class="pill good">ENCRYPTED</span></div><p class="muted">Only encrypted extracted records are stored in this browser's local database. No payslip upload, analytics, advertising or cloud sync is built in.</p><div class="actionrow"><button id="lockNow" class="secondary">Lock vault</button><button id="clearData" class="dangerbtn">Erase all local data</button></div><p class="micro">Keep a separate encrypted backup in Files. iOS may remove website data if storage is cleared or the device is restored.</p></section>
+</div></main>
+<footer><span>ARMYPAY 360</span><span>PRIVATE BY DESIGN • NO CLOUD SYNC</span></footer>
+<script src="./app.js"></script>
+</body></html>
